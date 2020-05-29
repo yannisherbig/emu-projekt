@@ -30,14 +30,14 @@ public final class BasisModel {
 	}
 	
 	public void speichereMessungInDB(int messreihenId, Messung messung)
-		throws ClassNotFoundException, SQLException{
+		throws ClassNotFoundException, SQLException {
 		this.dbAktionen.connectDB();
 		this.dbAktionen.fuegeMessungEin(messreihenId, messung);
 		this.dbAktionen.closeDb();
 	} 
 	
 	public void leseMessreihenInklusiveMessungenAusDB()
-		throws ClassNotFoundException, SQLException{
+		throws ClassNotFoundException, SQLException {
 		this.dbAktionen.connectDB();
 		Messreihe[] messreihenAusDb 
 		    = this.dbAktionen.leseMessreihenInklusiveMessungen(); 
@@ -52,14 +52,14 @@ public final class BasisModel {
 	}
 		  
 	public void speichereMessreiheInDB(Messreihe messreihe)
-	  	throws ClassNotFoundException, SQLException{
+	  	throws ClassNotFoundException, SQLException {
 	  	this.dbAktionen.connectDB();
 	  	this.dbAktionen.fuegeMessreiheEin(messreihe);
 	  	this.dbAktionen.closeDb();
 	  	this.messreihen.add(messreihe);
 	} 
 	
-  	public String getDaten(){
+  	public String getDaten() {
     	return "in getDaten";
 	} 
  }
