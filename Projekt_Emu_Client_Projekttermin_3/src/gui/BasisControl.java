@@ -61,27 +61,8 @@ public class BasisControl implements Initializable {
 		Scene scene = new Scene(root);
 	    primaryStage.setTitle("EMU-Anwendung");
 		primaryStage.setScene(scene);
-		primaryStage.show();  // Anzeigen der Application
+		primaryStage.show(); 
 	}
- 	  
-	public Messung holeMessungVonEMU(String messreihenId, String laufendeNummer) 
-			throws FTDIException, InterruptedException {
- 		Messung ergebnis = null;
- 		int messId = -1;
-		messId = Integer.parseInt(messreihenId);
-		int lfdNr = Integer.parseInt(laufendeNummer);
-		EmuCheckConnection conn = new EmuCheckConnection();
- 		conn.connect();
- 		Thread.sleep(2000);
- 		conn.sendProgrammingMode();
- 		Thread.sleep(2000);
- 		conn.sendRequest(MESSWERT.Leistung);
- 		Thread.sleep(2000);
- 		ergebnis = new Messung(lfdNr, conn.gibErgebnisAus());
- 		conn.disconnect();
- 		this.speichereMessungInDB(messId, ergebnis);
- 		return ergebnis;
- 	}
 	
   	private void speichereMessungInDB(int messreihenId, Messung messung){
   		try {

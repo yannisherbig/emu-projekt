@@ -11,7 +11,9 @@ public class Messreihe {
 	
 	public Messreihe(int messreihenId, int zeitintervall,
 		String verbraucher, String messgroesse) {
-		super();
+		if (messreihenId < 1) {
+			throw new IllegalArgumentException("Only positive ID numbers are allowed!");
+		}
 		this.messreihenId = messreihenId;
 		this.zeitintervall = zeitintervall;
 		this.verbraucher = verbraucher;
